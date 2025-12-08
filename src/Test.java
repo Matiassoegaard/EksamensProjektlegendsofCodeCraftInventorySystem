@@ -11,5 +11,8 @@ public class Test {
         System.out.println(p1.showItems());
         p1.getInventory().removeItemByName("Common Sword");
         System.out.println(p1.showItems());
+        p1.getInventory().addItem(new Weapon(Weapon.WeaponType.GREATSWORD,"Rare Greatsword", Weapon.WieldType.TWO_HAND,1.3,1));
+        System.out.println(p1.showItems());
+
     }
 }

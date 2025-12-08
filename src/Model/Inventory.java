@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Inventory {
     private double itemTotalWeight;
     private ArrayList<Item> items;
+    private int maxInventorySize = 32;
 
     public Inventory() {
         this.itemTotalWeight = 0;
@@ -42,16 +43,45 @@ public class Inventory {
         }
     }
 
+    public void maxInventorySize(Player player){
+        if (player.getPlayerLevel() == 2 ){
+            setmaxInventorySize(64);
+        }
+        if (player.getPlayerLevel() == 3 ){
+            setmaxInventorySize(96);
+        }
+        if (player.getPlayerLevel() == 4 ){
+            setmaxInventorySize(128);
+        }
+        if (player.getPlayerLevel() == 5 ){
+            setmaxInventorySize(160);
+        }
+        if (player.getPlayerLevel() == 6 ){
+            setmaxInventorySize(192);
+        }
+    }
+
     //metode til at tilføje items
-    public void addItem(Item item){
+    public boolean addItem(Item item){
+        if (items.size() >= getmaxInventorySize()){
+            return false;
+        }
         items.add(item);
         itemTotalWeight += item.getItemWeight();
+        return true;
     }
+
     public ArrayList<Item> getItems(){
         return items;
     }
     public double getItemTotalWeight(){
         return itemTotalWeight;
+    }
+    public int getmaxInventorySize(){
+        return maxInventorySize;
+    }
+    public void setmaxInventorySize(int maxInventorySize){
+        this.maxInventorySize = maxInventorySize;
     }
 
 }
