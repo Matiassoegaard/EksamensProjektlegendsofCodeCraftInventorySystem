@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-
 public class Player {
     private Inventory inventory;
     private String playerName;
@@ -27,7 +25,7 @@ public class Player {
 
     public String showItems(){
         String result = playerName + " Inventory: \n";
-        for (Item item : inventory.getItems()){
+        for (Item item : inventory.getItemsInInventory()){
             result += item.toString() + "\n";
         }
         result += "Total Weight: " + inventory.getItemTotalWeight() + " Kg\n";
