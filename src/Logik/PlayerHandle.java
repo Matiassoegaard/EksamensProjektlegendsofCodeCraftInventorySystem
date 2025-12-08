@@ -2,7 +2,7 @@ package Logik;
 
 import Model.Player;
 
-public class Handle {
+public class PlayerHandle {
 
 
     public void createPlayer(String playerName, int playerLevel, int playerId) {
