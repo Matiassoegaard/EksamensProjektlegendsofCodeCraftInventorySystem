@@ -20,13 +20,9 @@ public class Player {
                 '}';
     }
 
-    public Player (String playerName, int playerLevel, int playerId) {
-        this.playerName = playerName;
-        this.playerLevel = playerLevel;
-        this.playerId = playerId;
-    }
 
-    public Player (Inventory inventory, String playerName, int playerLevel, int playerId){
+
+    public Player (String playerName, int playerLevel, int playerId){
         this.inventory = inventory;
         this.playerName = playerName;
         this.playerLevel = playerLevel;
