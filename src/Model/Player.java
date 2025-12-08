@@ -7,9 +7,14 @@ public class Player {
     private String playerName;
     private int playerLevel;
     private int playerId;
-    private ArrayList<Player> listOfPlayers;
 
-    public Player() {}
+
+    public Player (String playerName, int playerLevel, int playerId){
+        this.inventory = new Inventory();
+        this.playerName = playerName;
+        this.playerLevel = playerLevel;
+        this.playerId = playerId;
+    }
 
     @Override
     public String toString() {
@@ -20,28 +25,19 @@ public class Player {
                 '}';
     }
 
-
-
-    public Player (String playerName, int playerLevel, int playerId){
-        this.inventory = inventory;
-        this.playerName = playerName;
-        this.playerLevel = playerLevel;
-        this.playerId = playerId;
-        listOfPlayers = new ArrayList<Player>();
-    }
-
-    public Player createPlayer(String playerName, int playerLevel, int playerId){
-        Player newPlayer = new Player(inventory, playerName, playerLevel, playerId);
-        Item standardItem = new Item();
-        standardItem.standardItem();
-        return newPlayer;
-    }
-
     public String showItems(){
-        Item i = new Item();
-        return i.standardItem().toString();
+        String result = playerName + " Inventory: \n";
+        for (Item item : inventory.getItems()){
+            result += item.toString() + "\n";
+        }
+        result += "Total Weight: " + inventory.getItemTotalWeight() + " Kg\n";
+        return result;
     }
 
+
+    public Inventory getInventory() {
+        return inventory;
+    }
     public String getPlayerName() {
         return playerName;
     }

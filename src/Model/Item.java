@@ -20,21 +20,6 @@ public class Item {
     }
 
 
-    public ArrayList<Item> standardItem(){
-        ArrayList<Item> standardItems = new ArrayList<>();
-        standardItems.add(new Armor(Armor.ArmorType.CHESTPLATE, "Common Chestplate", Armor.ArmorSubType.CLOTH,12.5,1));
-        standardItems.add(new Weapon(Weapon.WeaponType.SWORD,"Common Sword", Weapon.WieldType.ONE_HAND,1.5,1));
-        standardItems.add(new Consumable(Consumable.ConsumableType.POTION, "Common Potion", 0.1, 1));
-        return standardItems;
-    }
-
-
-
-
-
-
-
-
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }

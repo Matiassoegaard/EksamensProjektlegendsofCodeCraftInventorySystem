@@ -6,12 +6,11 @@ public class Weapon extends Item {
 
     @Override
     public String toString() {
-        return  "ItemName " + getItemName() +
-                "Level " + getItemLevel() +
-                "Weapon{" +
-                "weaponType=" + weaponType +
-                ", weaponSubType=" + weaponSubType +
-                '}';
+        return  "Item: " + getItemName() + "\n" +
+                "Level: " + getItemLevel() +"\n" +
+                "Weapon: " + weaponType +"\n" +
+                "Type:" + weaponSubType +"\n" ;
+
     }
 
     public Weapon(WeaponType weaponType, String itemName, WieldType weaponSubType, double itemWeight, int itemLevel){

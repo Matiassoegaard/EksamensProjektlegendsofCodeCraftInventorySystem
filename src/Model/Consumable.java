@@ -5,11 +5,10 @@ public class Consumable extends Item{
 
     @Override
     public String toString() {
-        return  "ItemName " + getItemName() +
-                "Level " + getItemLevel() +
-                "Consumable{" +
-                "itemType=" + itemType +
-                '}';
+        return  "Item: " + getItemName() +"\n" +
+                "Level: " + getItemLevel() +"\n" +
+                "Consumable: " + itemType + "\n";
+
     }
 
     public Consumable(ConsumableType itemType, String itemName, double itemWeight, int itemLevel){
