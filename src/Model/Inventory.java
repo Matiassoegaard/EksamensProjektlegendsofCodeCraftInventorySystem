@@ -7,6 +7,7 @@ public class Inventory {
     private ArrayList<Item> itemsInInventory;
     private int maxInventorySize = 32;
 
+
     public Inventory() {
         this.itemTotalWeight = 0;
         this.itemsInInventory = new ArrayList<>();
@@ -63,9 +64,25 @@ public class Inventory {
 
     //metode til at tilføje items
     public boolean addItem(Item item){
+        //Gør til: Try catch til not custom exception handling
         if (itemsInInventory.size() >= getmaxInventorySize()){
             return false;
         }
+        if (item instanceof Consumable){
+            Consumable newConsumable = (Consumable) item;
+            for (Item existingItem : itemsInInventory){
+                if(existingItem instanceof Consumable){
+                    Consumable existingConsumable = (Consumable) existingItem;
+
+                    if(existingConsumable.isSameType(newConsumable)){
+                        existingConsumable.addToStack(newConsumable.getStackSize());
+                        itemTotalWeight += newConsumable.getItemWeight();
+                        return true;
+                    }
+                }
+            }
+        }
+
         itemsInInventory.add(item);
         itemTotalWeight += item.getItemWeight();
         return true;

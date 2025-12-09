@@ -1,4 +1,5 @@
 import Logik.PlayerHandle;
+import Model.Consumable;
 import Model.Player;
 import Model.Item;
 import Model.Weapon;
@@ -13,6 +14,15 @@ public class Test {
         System.out.println(p1.showItems());
         p1.getInventory().addItem(new Weapon(Weapon.WeaponType.GREATSWORD,"Rare Greatsword", Weapon.WieldType.TWO_HAND,1.3,1));
         System.out.println(p1.showItems());
+        Consumable po1 = new Consumable(Consumable.ConsumableType.POTION,"Common Mana Potion",0.1,1);
+        Consumable po2 = new Consumable(Consumable.ConsumableType.POTION,"Common Mana Potion",0.1,1);
+        Consumable po3 = new Consumable(Consumable.ConsumableType.POTION,"Common Mana Potion",0.1,1);
+        Consumable po4 = new Consumable(Consumable.ConsumableType.POTION,"Common Health Potion",0.1,1);
 
+        p1.getInventory().addItem(po1);
+        p1.getInventory().addItem(po2);
+        p1.getInventory().addItem(po3);
+        p1.getInventory().addItem(po4);
+        System.out.println(p1.showItems());
     }
 }
