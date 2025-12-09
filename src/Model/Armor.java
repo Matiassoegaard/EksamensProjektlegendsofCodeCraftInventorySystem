@@ -10,7 +10,7 @@ public class Armor extends Item {
         return  "Item: " + getItemName() + "\n" +
                 "Level: " + getItemLevel() + "\n" +
                 "Type: " + armorType + "\n" +
-                "Material" + armorSubType + "\n";
+                "Material: " + armorSubType + "\n";
     }
 
     public Armor(Armor.ArmorType armorType, String itemName, Armor.ArmorSubType armorSubType, double itemWeight, int itemLevel){

@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Item {
+public abstract class Item {
 
 
     private String itemName;
