@@ -1,11 +1,13 @@
 package Model;
 
+import CustomException.NotEnoughSpaceInInventory;
+
 import java.util.ArrayList;
 
 public class Inventory {
     private double itemTotalWeight;
     private ArrayList<Item> itemsInInventory;
-    private int maxInventorySize = 32;
+    private int maxInventorySize = 6;
 
 
     public Inventory() {
@@ -65,27 +67,36 @@ public class Inventory {
     //metode til at tilføje items
     public boolean addItem(Item item){
         //Gør til: Try catch til not custom exception handling
-        if (itemsInInventory.size() >= getmaxInventorySize()){
-            return false;
-        }
-        if (item instanceof Consumable){
-            Consumable newConsumable = (Consumable) item;
-            for (Item existingItem : itemsInInventory){
-                if(existingItem instanceof Consumable){
-                    Consumable existingConsumable = (Consumable) existingItem;
+        try{
+                if (item instanceof Consumable){
+                    Consumable newConsumable = (Consumable) item;
+                    for (Item existingItem : getItemsInInventory()){
+                        if(existingItem instanceof Consumable){
+                            Consumable existingConsumable = (Consumable) existingItem;
 
-                    if(existingConsumable.isSameType(newConsumable)){
-                        existingConsumable.addToStack(newConsumable.getStackSize());
-                        itemTotalWeight += newConsumable.getItemWeight();
-                        return true;
+                            if(existingConsumable.isSameType(newConsumable)){
+                                existingConsumable.addToStack(newConsumable.getStackSize());
+                                itemTotalWeight += newConsumable.getItemWeight();
+                                return true;
+                            }
+                        }
                     }
                 }
+            if (getItemsInInventory().size() >= getmaxInventorySize()){
+                throw new NotEnoughSpaceInInventory();
             }
+
+                itemsInInventory.add(item);
+                itemTotalWeight += item.getItemWeight();
+                return true;
+
+        } catch (NotEnoughSpaceInInventory e){
+            System.out.println(e.getMessage());
+            return false;
         }
 
-        itemsInInventory.add(item);
-        itemTotalWeight += item.getItemWeight();
-        return true;
+
+
     }
 
     public ArrayList<Item> getItemsInInventory(){
